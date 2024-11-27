@@ -22,7 +22,7 @@ public class UI {
 	public static final String ANSI_BLUE_BACKGOUND = "\u001B[44m";
 	public static final String ANSI_PURPLE_BACKGOUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGOUND = "\u001B[46m";
-	public static final String ANSI_WHITE_BACKGOUND = "\u001B[47m";
+	public static final String ANSI_WHITE_backend = "\u001B[47m";
 
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
@@ -32,7 +32,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.println("   a    b   c   d   e   f   g   h");
+		System.out.println("   a   b   c   d   e   f   g   h");
 	}
 
 	private static void printPiece(ChessPiece piece) {

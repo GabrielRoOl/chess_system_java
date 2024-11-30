@@ -18,38 +18,51 @@ public class Rook extends ChessPiece {
 
 	@Override
 	public boolean[][] possibleMoves() {
-	    boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
-	    Position p = new Position(0, 0);
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 
-	    // Vetores para as direções (vertical e horizontal)
-	    int[][] directions = {
-	        {-1, 0}, // acima
-	        {1, 0},  // abaixo
-	        {0, -1}, // esquerda
-	        {0, 1}   // direita
-	    };
+		Position p = new Position(0, 0);
 
-	    for (int[] direction : directions) {
-	        int rowDirection = direction[0];
-	        int colDirection = direction[1];
+		// above
+		p.setValues(position.getRow() - 1, position.getColumn());
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+			p.setRow(p.getRow() - 1);
+		}
+		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+		}
 
-	        // Inicia a verificação a partir da posição atual da peça
-	        p.setValues(position.getRow() + rowDirection, position.getColumn() + colDirection);
+		// below
+		p.setValues(position.getRow() + 1, position.getColumn());
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+			p.setRow(p.getRow() + 1);
+		}
+		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+		}
 
-	        // Enquanto a posição for válida e não houver peça
-	        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-	            mat[p.getRow()][p.getColumn()] = true;
-	            p.setValues(p.getRow() + rowDirection, p.getColumn() + colDirection);
-	        }
+		// left
+		p.setValues(position.getRow(), position.getColumn() - 1);
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+			p.setColumn(p.getColumn() - 1);
+		}
+		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+		}
 
-	        // Verifica se a última posição contém uma peça oponente
-	        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-	            mat[p.getRow()][p.getColumn()] = true;
-	        }
-	    }
+		// rigth
+		p.setValues(position.getRow(), position.getColumn() + 1);
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+			p.setColumn(p.getColumn() + 1);
+		}
+		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+		}
 
-	    return mat;
+		return mat;
 	}
-
 
 }

@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import boardgame.BoardException;
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
@@ -46,7 +47,14 @@ public class UI {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
-	
+
+	public static void printMatch(ChessMatch chessMatch) {
+		printBoard(chessMatch.getPiecer());
+		System.out.println();
+		System.out.println("Trun: " + chessMatch.getTurn());
+		System.out.println("Wainting player: " + chessMatch.getCurrentPlayer());
+	}
+
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -57,6 +65,7 @@ public class UI {
 		}
 		System.out.println("   a   b   c   d   e   f   g   h");
 	}
+
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -69,7 +78,7 @@ public class UI {
 	}
 
 	private static void printPiece(ChessPiece piece, boolean background) {
-		if(background) {
+		if (background) {
 			System.out.print(ANSI_BLUE_BACKGOUND);
 		}
 		if (piece == null) {

@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import UI.UI;
 import chess.ChessException;
 import chess.ChessMatch;
 import chess.ChessPiece;

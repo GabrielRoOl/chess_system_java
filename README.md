@@ -18,24 +18,31 @@ Para executar o jogo, você precisará de:
 
 ## Como executar
 
-1. Clone este repositório:
+
+1. Clone este repositório a partir da sua IDE de proferencia:
 
    ```Java
-   https://github.com/GabrielRoOl/chess_system_java.git
+   git clone https://github.com/GabrielRoOl/chess_system_java.git
    ```
 
 2. Navegue até o diretório do projeto:
 
    ```Java
-    cd seu_repositorio/bin
+    cd chess_system_java
    ```
 
-3. Execute o jogo:
+3. Compile os arquivos `.java` para gerar os arquivos `.class`:
 
    ```Java
-    java application/Program
+    javac -d bin src/**/*.java
    ```
 
+4. Execute o jogo:
+
+   ```Java
+    java -cp bin application.Program
+   ```
+   
 ## Como jogar
 
 - O tabuleiro será exibido no terminal.
